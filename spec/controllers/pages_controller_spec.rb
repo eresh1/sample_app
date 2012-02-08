@@ -24,6 +24,13 @@ describe "GET 'about'" do
      end
    end
 
+describe "GET 'help'" do
+    it "should be successful" do
+      get 'help'
+      response.should be_success
+    end
+  end
+
 it "should have the right title" do
 	get 'home'
 	response.should have_selector("title",
@@ -40,6 +47,12 @@ it "should have the right title" do
 	get 'about'
 	response.should have_selector("title",
 				:content => "Ruby on Rails Tutorial Sample App | About")
+end
+
+it "should have the right title" do
+	get 'help'
+	response.should have_selector("title",
+				:content => "Ruby on Rails Tutorial Sample App | Help")
 end
 
 end

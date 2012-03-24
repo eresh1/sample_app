@@ -97,6 +97,7 @@ describe "password validations" do
       hash = @attr.merge(:password => long, :password_confirmation => long)
       User.new(hash).should_not be_valid
     end
+end
 
 describe "password Encryption" do
 
@@ -106,6 +107,10 @@ describe "password Encryption" do
 
 	it "should have an encrypted password attribute" do
 	  @user.should respond_to(:encrypted_password)
+	end
+	
+	it "should set the encrypted password" do
+	  @user.encrypted_password.should_not be_blank
 	end
   end
 end

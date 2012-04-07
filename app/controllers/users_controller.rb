@@ -17,7 +17,14 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       @title = "Sign up"
+      	#Chapt8 Exercise 2
+      	@user.password = ""
+      	@user.password_confirmation = ""
+      	#End Exercise 2
+
       render 'new'
+      
+	
     end
   end
 end

@@ -24,8 +24,8 @@ class UsersController < ApplicationController
       	#End Exercise 2
 
       render 'new'
-      
+     end 
 	
     
   end
-end
+

@@ -1,25 +1,25 @@
 require 'spec_helper'
 
 describe UsersController do
-	render_views
+render_views
 
 describe "GET 'show'" do
 
-	before(:each) do
-	  @user = Factory(:user)
-	end
+before(:each) do
+@user = Factory(:user)
+end
 
-	it "should be successful" do
-	  get :show, :id => @user
-	  response.should be_success
-	end
+it "should be successful" do
+get :show, :id => @user
+response.should be_success
+end
 
-	it "should find the right user" do
-	  get :show, :id => @user
-	  assigns(:user).should == @user
-	end
+it "should find the right user" do
+get :show, :id => @user
+assigns(:user).should == @user
+end
 
-	it "should have the right title" do
+it "should have the right title" do
       get :show, :id => @user
       response.should have_selector("title", :content => @user.name)
     end
@@ -43,39 +43,39 @@ end
       response.should be_success
     end
 
-	it "should have the right title" do
-	get :new
-	response.should have_selector("title", :content => "Sign up")
+it "should have the right title" do
+get :new
+response.should have_selector("title", :content => "Sign up")
     end
-		#Chapter 8 Exercise 1
-		it "should have a name field" do
-        	get :new
-        	response.should have_selector("input[name='user[name]'][type='text']")
-      		end
+#Chapter 8 Exercise 1
+it "should have a name field" do
+         get :new
+         response.should have_selector("input[name='user[name]'][type='text']")
+       end
 
-      		it "should have an email field" do
-      		get :new
-        	response.should have_selector("input[name='user[email]'][type='text']")
-      		end
+       it "should have an email field" do
+       get :new
+         response.should have_selector("input[name='user[email]'][type='text']")
+       end
 
-      		it "should have a password field" do
-		get :new
-        	response.should have_selector("input[name='user[password]'][type='password']")
-      		end
+       it "should have a password field" do
+get :new
+         response.should have_selector("input[name='user[password]'][type='password']")
+       end
 
-      		it "should have a password confirmation field" do
-		get :new
-        	response.should have_selector("input[name='user[password_confirmation]'][type='password']")
-    		end
-		
-		#End Excercise 1
+       it "should have a password confirmation field" do
+get :new
+         response.should have_selector("input[name='user[password_confirmation]'][type='password']")
+     end
+
+#End Excercise 1
   end
 
   describe "POST 'create'" do
 
-	describe "failure" do
-	
-	   before(:each) do
+describe "failure" do
+
+before(:each) do
         @attr = { :name => "", :email => "", :password => "",
                   :password_confirmation => "" }
       end

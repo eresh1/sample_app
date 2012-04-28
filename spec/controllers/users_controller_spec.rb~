@@ -27,47 +27,47 @@ describe UsersController do
         	end
       	    end
 
-            it "should be successful" do
-            get :index
-            response.should be_success
-            end
+            #it "should be successful" do
+            #get :index
+            #response.should be_success
+            #end
 
-            it "should have the right title" do
-            get :index
-            response.should have_selector("title", :content => "All users")
-            end
+            #it "should have the right title" do
+            #get :index
+            #response.should have_selector("title", :content => "All users")
+            #end
 
-            it "should have an element for each user" do
-            get :index
-        	@users[0..2].each do |user|
-          	response.should have_selector("li", :content => user.name)
-        	end
-      	    end
+            #it "should have an element for each user" do
+            #get :index
+        	#@users[0..2].each do |user|
+          	#response.should have_selector("li", :content => user.name)
+        	#end
+      	    #end
 	   
-            it "should paginate users" do
-            get :index
-            response.should have_selector("div.pagination")
-            response.should have_selector("span.disabled", :content => "Previous")
-            response.should have_selector("a", :href => "/users?page=2",
-                                               :content => "2")
-            response.should have_selector("a", :href => "/users?page=2",
-                                               :content => "Next")
-            end
+            #it "should paginate users" do
+            #get :index
+            #response.should have_selector("div.pagination")
+            #response.should have_selector("span.disabled", :content => "Previous")
+            #response.should have_selector("a", :href => "/users?page=2",
+             #                                  :content => "2")
+            #response.should have_selector("a", :href => "/users?page=2",
+             #                                  :content => "Next")
+            #end
 
-		it "should have delete links for admins" do
-        		@user.toggle!(:admin)
-        		other_user = User.all.second
-        		get :index
-        		response.should have_selector('a', :href => user_path(other_user),
-                                           		:content => "delete")
-      		end
+		#it "should have delete links for admins" do
+        	#	@user.toggle!(:admin)
+        	#	other_user = User.all.second
+        	#	get :index
+        	#	response.should have_selector('a', :href => user_path(other_user),
+                 #                          		:content => "delete")
+      		#end
 
-      		it "should not have delete links for regular users" do
-        		other_user = User.all.second
-        		get :index
-        		response.should_not have_selector('a', :href => user_path(other_user),
-                                               		:content => "delete")
-      		end
+      		#it "should not have delete links for regular users" do
+        	#	other_user = User.all.second
+        	#	get :index
+        	#	response.should_not have_selector('a', :href => user_path(other_user),
+                 #                              		:content => "delete")
+      		#end
     
  
         end
@@ -111,6 +111,13 @@ describe UsersController do
 	response.should have_selector("span.content", :content => mp1.content)
 	response.should have_selector("span.content", :content => mp2.content)
     	end
+
+			#Exercise 4 Chapter 11			
+			it "should paginate microposts" do
+      			35.times { Factory(:micropost, :user => @user, :content => "foo") }
+      			get :show, :id => @user
+      			response.should have_selector('div.pagination')
+    			end
     end
 
 

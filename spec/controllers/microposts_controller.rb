@@ -79,7 +79,7 @@ describe "POST 'create'" do
         delete :destroy, :id => @micropost
         response.should redirect_to(root_path)
       end
-    end
+end
 
     describe "for an authorized user" do
 
@@ -96,4 +96,3 @@ describe "POST 'create'" do
     end
   end
 end
-

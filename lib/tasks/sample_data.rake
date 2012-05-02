@@ -4,6 +4,7 @@ namespace :db do
     Rake::Task['db:reset'].invoke
     make_users
     make_microposts
+    make_relationships
 end
 end
      
@@ -31,6 +32,16 @@ def make_microposts
     end
   end
 end
+
+def make_relationships
+  users = User.all
+  user  = users.first
+  following = users[1..50]
+  followers = users[3..40]
+  following.each { |followed| user.follow!(followed) }
+  followers.each { |follower| follower.follow!(user) }
+end
+
 
 
 

@@ -1,0 +1,6 @@
+<h1>Sometimes I Just...</h1>
+<p>
+ 
+</p>
+
+<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
